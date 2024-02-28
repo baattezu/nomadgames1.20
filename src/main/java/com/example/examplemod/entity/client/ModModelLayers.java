@@ -9,4 +9,6 @@ public class ModModelLayers {
             new ResourceLocation(ExampleMod.MODID, "assyk_layer"), "main");
 
 
+    // This layer location should be baked with EntityRendererProvider.Context in the entity renderer and passed into this model's constructor
+
 }

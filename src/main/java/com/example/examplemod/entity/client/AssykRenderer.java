@@ -16,12 +16,12 @@ import net.minecraft.util.Mth;
 import net.minecraft.world.entity.projectile.ThrownTrident;
 
 public class AssykRenderer extends EntityRenderer<AssykProjectileEntity> {
-    public static final ResourceLocation ASSYK_LOCATION = new ResourceLocation("textures/entity/assyk_3d_.png");
+    public static final ResourceLocation ASSYK_LOCATION = new ResourceLocation("textures/entity/assyk_3d_entity.png");
     private final AssykModel model;
 
     public AssykRenderer(EntityRendererProvider.Context pContext) {
         super(pContext);
-        this.model = new AssykModel(pContext.bakeLayer(ModelLayers.TRIDENT));
+        this.model = new AssykModel(pContext.bakeLayer(ModModelLayers.ASSYK_LAYER));
     }
 
 

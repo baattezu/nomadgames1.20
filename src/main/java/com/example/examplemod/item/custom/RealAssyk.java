@@ -1,8 +1,6 @@
 package com.example.examplemod.item.custom;
 
 import com.example.examplemod.entity.custom.AssykProjectileEntity;
-import com.google.common.collect.ImmutableMultimap;
-import com.google.common.collect.Multimap;
 import net.minecraft.core.BlockPos;
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.sounds.SoundEvents;
@@ -11,22 +9,15 @@ import net.minecraft.stats.Stats;
 import net.minecraft.util.Mth;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResultHolder;
-import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.MoverType;
-import net.minecraft.world.entity.ai.attributes.Attribute;
-import net.minecraft.world.entity.ai.attributes.AttributeModifier;
-import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.entity.projectile.AbstractArrow;
-import net.minecraft.world.entity.projectile.ThrownTrident;
 import net.minecraft.world.item.*;
 import net.minecraft.world.item.enchantment.EnchantmentHelper;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.phys.Vec3;
-
-import java.util.function.Predicate;
 
 public class RealAssyk extends Item implements Vanishable{
     public static final int THROW_THRESHOLD_TIME = 10;
@@ -46,7 +37,7 @@ public class RealAssyk extends Item implements Vanishable{
      * Returns the action that specifies what animation to play when the item is being used.
      */
     public UseAnim getUseAnimation(ItemStack pStack) {
-        return UseAnim.SPEAR;
+        return UseAnim.BOW;
     }
 
     public int getUseDuration(ItemStack pStack) {
@@ -68,7 +59,7 @@ public class RealAssyk extends Item implements Vanishable{
                         });
                         if (j == 0) {
                             AssykProjectileEntity assykProjectileEntity = new AssykProjectileEntity(pLevel, player, pStack);
-                            assykProjectileEntity.shootFromRotation(player, player.getXRot(), player.getYRot(), 0.0F, 2.5F + (float)j * 0.5F, 1.0F);
+                            assykProjectileEntity.shootFromRotation(player, player.getXRot(), player.getYRot(), 0.0F, 0.5F + (float)j * 0.5F, 1.0F);
                             if (player.getAbilities().instabuild) {
                                 assykProjectileEntity.pickup = AbstractArrow.Pickup.CREATIVE_ONLY;
                             }
@@ -116,6 +107,7 @@ public class RealAssyk extends Item implements Vanishable{
             }
         }
     }
+
 
     /**
      * Called to trigger the item's "innate" right click behavior. To handle when this item is used on a Block, see
